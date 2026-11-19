@@ -1,0 +1,4 @@
+{% extends "base.html" %}
+{% block title %}{{ item.name }} | 찾아드림{% endblock %}
+{% block content %}<a class="back" href="/">← 목록으로</a><article class="detail"><div><span class="category">{{ item.category }}</span><span class="status {{ 'done' if item.status == '전달 완료' else '' }}">{{ item.status }}</span></div><h1>{{ item.name }}</h1><dl><dt>습득 장소</dt><dd>{{ item.found_location }}</dd><dt>습득 날짜</dt><dd>{{ item.found_date }}</dd><dt>보관 장소</dt><dd>{{ item.storage_location }}</dd><dt>상세 설명</dt><dd>{{ item.description or '등록된 설명이 없습니다.' }}</dd></dl><form method="post" action="/items/{{ item.id }}/status"><label>상태 변경<select name="status"><option {% if item.status == '보관 중' %}selected{% endif %}>보관 중</option><option {% if item.status == '전달 완료' %}selected{% endif %}>전달 완료</option></select></label><button class="button" type="submit">저장</button></form></article>{% endblock %}
+

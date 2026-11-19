@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+{% block title %}분실물 목록 | 찾아드림{% endblock %}
+{% block content %}
+<section class="hero"><p>LOST & FOUND</p><h1>주인을 기다리는 물건들</h1><span>습득하신 물건을 등록하고, 주인에게 돌려주세요.</span></section>
+<nav class="filters"><a href="/" class="{% if not selected_status %}active{% endif %}">전체</a><a href="/?status=보관 중" class="{% if selected_status == '보관 중' %}active{% endif %}">보관 중</a><a href="/?status=전달 완료" class="{% if selected_status == '전달 완료' %}active{% endif %}">전달 완료</a></nav>
+{% if items %}<div class="cards">{% for item in items %}<a class="card" href="/items/{{ item.id }}"><div><span class="category">{{ item.category }}</span><span class="status {{ 'done' if item.status == '전달 완료' else '' }}">{{ item.status }}</span></div><h2>{{ item.name }}</h2><p>{{ item.found_location }} · {{ item.found_date }}</p><small>보관: {{ item.storage_location }}</small></a>{% endfor %}</div>{% else %}<div class="empty"><h2>등록된 분실물이 없습니다.</h2><p>처음 습득한 물건을 등록해 보세요.</p></div>{% endif %}
+{% endblock %}
+

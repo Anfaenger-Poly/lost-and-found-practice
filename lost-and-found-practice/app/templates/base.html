@@ -1,0 +1,14 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}교내 분실물{% endblock %}</title>
+  <link rel="stylesheet" href="{{ url_for('static', path='/style.css') }}">
+</head>
+<body>
+  <header><a class="brand" href="/">찾아드림 <span>교내 분실물</span></a><a class="button" href="/items/new">+ 습득물 등록</a></header>
+  <main>{% block content %}{% endblock %}</main>
+</body>
+</html>
+
